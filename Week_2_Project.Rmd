@@ -1,0 +1,22 @@
+---
+title: "R Markdown and Leaflet_Week_2_Project"
+author: "Claudio Senatore"
+date: "14/6/2020"
+output: html_document
+---
+
+
+```{r}
+library(leaflet)
+library(readxl)
+library(magrittr)
+Covid <- read_excel("Covid.xlsx")
+
+Covid %>% 
+  leaflet() %>% 
+  addTiles() %>% 
+  addCircles(weight=1,radius=sqrt(Covid$Positive)*30)
+
+ 
+```
+
